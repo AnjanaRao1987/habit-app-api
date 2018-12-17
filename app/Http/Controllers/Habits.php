@@ -20,7 +20,6 @@ class Habits extends Controller
         $data = $request->only(['name', 'category', 'description', 'frequency', 'period', 'motivation']);
 
         return new HabitResource(Habit::create($data));
-
     }
 
     public function show(Habit $habit)

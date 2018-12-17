@@ -11,6 +11,7 @@ class CreateLogsTable extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('date_completed');
+            $table->timestamps();
 
             $table->integer('habit_id')->unsigned();
             $table->foreign('habit_id')->references('id')->on('habits')->onDelete('cascade');
