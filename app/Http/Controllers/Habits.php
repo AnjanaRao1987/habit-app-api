@@ -23,18 +23,23 @@ class Habits extends Controller
 
     }
 
-    public function show($id)
+    public function show(Habit $habit)
     {
-        //
+        return new HabitResource($habit);
     }
 
-    public function update(Request $request, $id)
+    public function update(HabitRequest $request, Habit $habit)
     {
-        //
+        $data = $request->only(['name', 'category', 'description', 'frequency', 'period', 'motivation']);
+
+        $habit->fill($data)->save();
+
+        return new HabitResource($habit);
     }
 
-    public function destroy($id)
+    public function destroy(Habit $habit)
     {
-        //
+        $habit->delete();
+        return response(null, 204);
     }
 }
