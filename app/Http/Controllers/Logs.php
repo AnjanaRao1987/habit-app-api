@@ -10,9 +10,9 @@ use App\Http\Requests\LogRequest;
 
 class Logs extends Controller
 {
-    public function index()
+    public function index(Habit $habit)
     {
-        return LogResource::collection(Log::all());
+        return LogResource::collection($habit->logs);
     }
 
     public function store(LogRequest $request, $id)
@@ -24,18 +24,12 @@ class Logs extends Controller
         return new LogResource(Log::create($data));
     }
 
-    public function show($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
     public function destroy($id)
     {
-        //
+        $log = Log::find($id);
+
+        $log->delete();
+
+        return response(null, 204);
     }
 }
