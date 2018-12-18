@@ -24,12 +24,9 @@ class Logs extends Controller
         return new LogResource(Log::create($data));
     }
 
-    public function destroy($id)
+    public function destroy(Log $log)
     {
-        $log = Log::find($id);
-
         $log->delete();
-
         return response(null, 204);
     }
 }
