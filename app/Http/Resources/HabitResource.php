@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\LogResource;
 
 class HabitResource extends JsonResource
 {
@@ -18,6 +19,7 @@ class HabitResource extends JsonResource
             // use toDateTimeString() to pull datetime from created_at object
             "created_at" => $this->created_at->toDateTimeString(),
             "id" => $this->id,
+            "logs" => LogResource::collection($this->logs),
         ];
     }
 }
