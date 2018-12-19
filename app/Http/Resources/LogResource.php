@@ -10,7 +10,7 @@ class LogResource extends JsonResource
     {
         return [
             "date_completed" => $this->date_completed,
-            "habit_id" => $this->habit_id,
+            "habit_id" => (int)$this->habit_id,
             "id" => $this->id,
         ];
     }
