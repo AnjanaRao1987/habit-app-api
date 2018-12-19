@@ -9,7 +9,7 @@ class LogResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "date_completed" => $this->date_completed,
+            "date_completed" => "{$this->date_completed} 00:00:00",
             "habit_id" => (int)$this->habit_id,
             "id" => $this->id,
         ];
