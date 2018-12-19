@@ -27,6 +27,6 @@ class Logs extends Controller
     public function destroy(Log $log)
     {
         $log->delete();
-        return response(null, 204);
+        return new LogResource($log);
     }
 }
